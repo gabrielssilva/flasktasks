@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet href="{{ url_for('static',filename='css/bootstrap.css') }}">
+        <link rel=stylesheet href="{{ url_for('static',filename='css/application.css') }}">
+        <script src="{{ url_for('static', filename='js/jquery-2.2.4.js') }}" async></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}" async></script>
+        <title>FlaskTasks</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url_for('index') }}">FlaskTasks</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('missions') }}">Missions</a></li>
+                    <li><a href="#">Tasks</a></li>
+                </ul>
+            </div>
+        </nav> 
+        {% block body %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+    <div class="page-header">
+        <h1>Missions</h1>
+    </div>
+
+    <a href="{{ url_for('new_mission') }}" class="btn btn-link">
+        <span class="glyphicon glyphicon-plus"></span><span>New Mission</span>
+    </a>
+    <div class="list-group">
+        {% for mission in missions %}
+            <a href="{{ url_for("tasks", mission=mission.id) }}" class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-11">
+                        <h4 class="list-group-item-header">{{ mission.title }}</h4>
+                        <p class="list-group-item-text">{{ mission.description }}</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <span class="badge badge-big badge-blue">5</span>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

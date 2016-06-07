@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+    <div class="page-header">
+        <h1>Tasks</h1>
+    </div>
+
+    <a href="{{ url_for('new_task') }}" class="btn btn-link new-item">
+        <span class="glyphicon glyphicon-plus"></span>New Task
+    </a>
+    <div class="row kanban">
+        <div class="col-sm-4">
+            {% with title="To Do", status="TO_DO", icon="fire" %}
+                {% include "task/kanban_panel.html" %}
+            {% endwith %}
+        </div>
+        <div class="col-sm-4">
+            {% with title="Doing", status="DOING", icon="send" %}
+                {% include "task/kanban_panel.html" %}
+            {% endwith %}
+        </div>
+        <div class="col-sm-4">
+            {% with title="Done", status="DONE", icon="sunglasses" %}
+                {% include "task/kanban_panel.html" %}
+            {% endwith %}
+        </div>
+    </div>
+</div>
+{% endblock %}

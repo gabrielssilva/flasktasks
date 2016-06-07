@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+    <div class="page-header">
+        <h1>{{ task.title }}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-9">
+            <p class="lead">
+                {{ task.description }}
+            </p>
+        </div>
+        <div class="col-sm-3 task-control">
+            <div class="btn-group btn-group-justified" role="group">
+                <a href="{{ url_for('set_status', task_id=task.id, status='to_do') }}" class="btn btn-warning">To do</a>
+                <a href="{{ url_for('set_status', task_id=task.id, status='doing') }}" class="btn btn-primary">Doing</a>
+                <a href="{{ url_for('set_status', task_id=task.id, status='done') }}" class="btn btn-success">Done</a>
+            </div>
+            <div class="btn-group btn-group-justified" role="group">
+                <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span>Edit</a>
+                <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-trash"></span>Remove</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

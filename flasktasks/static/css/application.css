@@ -5,3 +5,15 @@
 .badge-blue {
     background-color: #337ab7;
 }
+
+.btn.new-item .glyphicon {
+    margin-right: 5px;
+}
+
+.kanban .panel .panel-heading .glyphicon {
+    margin-left: 5px;
+}
+
+.task-control .btn .glyphicon {
+    margin-right: 5px;
+}

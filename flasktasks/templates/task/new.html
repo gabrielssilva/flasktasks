@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+    <div class="page-header">
+        <h1>New Task</h1>
+    </div>
+
+    <form method="POST">
+        <div class="form-group">
+            <input name="title" type="text" class="form-control" placeholder="What must be done?" required>
+        </div>
+        <div class="form-group">
+            <textarea name="description" class="form-control" rows="3" placeholder="Describe at will"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create it!</button>
+    </form>
+
+</div>
+{% endblock %}

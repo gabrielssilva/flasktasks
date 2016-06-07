@@ -21,11 +21,11 @@ class Task(db.Model):
     status = db.Column(db.Integer)
     mission_id = db.Column(db.Integer, db.ForeignKey('mission.id'))
 
-    def __init__(self, title, description, mission):
+    def __init__(self, title, description, mission_id):
         self.title = title
         self.description = description
         self.status = Status.TO_DO.value
-        self.mission_id = mission.id
+        self.mission_id = mission_id
 
 class Mission(db.Model):
     id = db.Column(db.Integer, primary_key=True)

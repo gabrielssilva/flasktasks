@@ -2,12 +2,24 @@
 {% block body %}
 <div class="container">
     <div class="page-header">
-        <h1>Tasks</h1>
+        <h1>Tasks<small class="pull-right">Mission</small></h1>
     </div>
 
-    <a href="{{ url_for('new_task') }}" class="btn btn-link new-item">
-        <span class="glyphicon glyphicon-plus"></span>New Task
-    </a>
+    {% if mission %}
+        <div class="well well-lg">
+            <h4>{{ mission.title }}, <small>{{ mission.description }}</small></h4>
+            <div class="btn-group task-control" role="group">
+                <a href="{{ url_for('new_task', mission_id=mission.id) }}" class="btn btn-link new-item"><span class="glyphicon glyphicon-plus"></span>New Task</a>
+                <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span>Edit</a>
+                <a href="{{ url_for('delete_mission', mission_id=mission.id) }}" id="delete-mission" class="btn btn-link"><span class="glyphicon glyphicon-trash"></span>Remove</a>
+            </div>
+        </div>
+    {% else %}
+        <a href="{{ url_for('new_task') }}" class="btn btn-link new-item">
+            <span class="glyphicon glyphicon-plus"></span>New Task
+        </a>
+    {% endif %}
+
     <div class="row kanban">
         <div class="col-sm-4">
             {% with title="To Do", status="TO_DO", icon="fire" %}

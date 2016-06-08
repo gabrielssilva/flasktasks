@@ -19,7 +19,7 @@
             </div>
             <div class="btn-group btn-group-justified" role="group">
                 <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span>Edit</a>
-                <a href="#" class="btn btn-link"><span class="glyphicon glyphicon-trash"></span>Remove</a>
+                <a href="{{ url_for('delete_task', task_id=task.id) }}" id="delete-task" class="btn btn-link"><span class="glyphicon glyphicon-trash"></span>Remove</a>
             </div>
         </div>
     </div>

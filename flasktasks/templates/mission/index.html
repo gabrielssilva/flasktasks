@@ -10,14 +10,14 @@
     </a>
     <div class="list-group">
         {% for mission in missions %}
-            <a href="{{ url_for("tasks", mission=mission.id) }}" class="list-group-item">
+            <a href="{{ url_for("tasks", mission_id=mission.id) }}" class="list-group-item">
                 <div class="row">
                     <div class="col-sm-11">
                         <h4 class="list-group-item-header">{{ mission.title }}</h4>
                         <p class="list-group-item-text">{{ mission.description }}</p>
                     </div>
                     <div class="col-sm-1">
-                        <span class="badge badge-big badge-blue">5</span>
+                        <span class="badge badge-big badge-blue">{{ mission.tasks.count() }}</span>
                     </div>
                 </div>
             </a>

@@ -26,7 +26,12 @@ def new_mission():
 
 @app.route('/tasks')
 def tasks():
-    tasks = Task.query.all()
+    if request.args.get('mission_id'):
+        mission = Mission.query.get_or_404(request.args.get('mission_id'))
+        tasks = Task.query.filter_by(mission_id=mission.id)
+    else:
+        tasks = Task.query.all()
+
     tasks_by_status = defaultdict(list)
     for task in tasks:
         status = Status(task.status).name 
@@ -38,12 +43,13 @@ def new_task():
     if request.method == 'POST':
         task = Task(request.form.get('title'),
                     request.form.get('description'),
-                    1)
+                    request.form.get('mission_id'))
         db.session.add(task)
         db.session.commit()
         return redirect(url_for('tasks'))
     else:
-        return render_template('task/new.html')
+        missions = Mission.query.all()
+        return render_template('task/new.html', missions=missions)
 
 @app.route('/tasks/<int:task_id>')
 def task(task_id):

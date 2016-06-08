@@ -14,9 +14,15 @@
                     <a class="navbar-brand" href="{{ url_for('index') }}">FlaskTasks</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('missions') }}">Missions</a></li>
-                    <li><a href="{{ url_for('tasks') }}">Tasks</a></li>
+                    <li class="{{ url_for('index') | is_current_page }}">
+                        <a href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="{{ url_for('missions') | is_current_page }}">
+                        <a href="{{ url_for('missions') }}">Missions</a>
+                    </li>
+                    <li class="{{ url_for('tasks') | is_current_page }}">
+                        <a href="{{ url_for('tasks') }}">Tasks</a>
+                    </li>
                 </ul>
             </div>
         </nav> 

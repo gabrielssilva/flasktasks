@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, abort, jsonify
 from collections import defaultdict
 from flasktasks import app, db
-from flasktasks.models import Mission, Task, Status 
+from flasktasks.models import Mission, Task, Status, Tag, Color
 
 
 @app.route('/')
@@ -83,4 +83,18 @@ def delete_mission(mission_id):
     db.session.delete(mission)
     db.session.commit()
     return url_for('missions')
-    
+
+@app.route('/tags/new', methods=['POST', 'GET'])
+def new_tag():
+    if request.method == 'POST':
+        try:
+            color = Color(int(request.form.get('color_value')))
+        except ValueError:
+            abort(400)
+        tag = Tag(request.form.get('name'), color)
+        db.session.add(tag)
+        db.session.commit()
+        return redirect(url_for('missions'))
+    else:
+        colors = { color.name: color.value for color in Color }
+        return render_template('tags/new.html', colors=colors)

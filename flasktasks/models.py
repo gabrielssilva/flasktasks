@@ -41,7 +41,7 @@ class Mission(db.Model):
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True)
-    status = db.Column(db.Integer)
+    color = db.Column(db.Integer)
     missions = db.relationship('Mission', backref='tag', lazy='dynamic')
 
     def __init__(self, name, color=Color.GREY):

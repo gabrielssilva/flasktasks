@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+    <div class="page-header">
+        <h1>New Tag</h1>
+    </div>
+
+    <form method="POST">
+        <div class="form-group">
+            <input name="name" type="text" class="form-control" placeholder="Choose a name for your tag" required>
+        </div>
+        
+        <div class="form-group">
+            <select class="form-control" name="color_value">
+                <option value="-1">Select a color</option>
+                {% for color_name, color_value in colors.items() %}
+                    <option value="{{ color_value }}">{{ color_name | human }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create it!</button>
+    </form>
+
+</div>
+{% endblock %}

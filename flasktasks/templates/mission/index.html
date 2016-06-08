@@ -5,9 +5,10 @@
         <h1>Missions</h1>
     </div>
 
-    <a href="{{ url_for('new_mission') }}" class="btn btn-link new-item">
-        <span class="glyphicon glyphicon-plus"></span><span>New Mission</span>
-    </a>
+    <div class="btn-group task-control" role="group">
+        <a href="{{ url_for('new_mission') }}" class="btn btn-link new-mission"><span class="glyphicon glyphicon-plus"></span><span>New Mission</span></a>
+        <a href="{{ url_for('new_tag') }}" class="btn btn-link new-tag"><span class="glyphicon glyphicon-plus"></span><span>New Tag</span></a>
+    </div>
     <div class="list-group">
         {% for mission in missions %}
             <a href="{{ url_for("tasks", mission_id=mission.id) }}" class="list-group-item">

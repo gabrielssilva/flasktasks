@@ -6,7 +6,7 @@ from flasktasks.models import Mission, Task, Status
 
 @app.route('/')
 def index():
-    return "Hello world"
+    return render_template('home.html')
 
 @app.route('/missions')
 def missions():

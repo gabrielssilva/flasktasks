@@ -51,6 +51,5 @@ class Tag(db.Model):
     
     def style(self):
         color = Color(self.color)
-        print(color)
         return "tagged tag-%s" % color.name.lower()
     

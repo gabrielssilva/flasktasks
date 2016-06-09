@@ -31,7 +31,7 @@ def tasks():
     mission = None
     if request.args.get('mission_id'):
         mission = Mission.query.get_or_404(request.args.get('mission_id'))
-        tasks = Task.query.filter_by(mission_id=mission.id)
+        tasks = Task.query.filter_by(mission_id=mission.id).all()
     else:
         tasks = Task.query.all()
 
@@ -90,7 +90,7 @@ def delete_mission(mission_id):
 def new_tag():
     if request.method == 'POST':
         try:
-            color = Color(int(request.form.get('tag_id')))
+            color = Color(int(request.form.get('color_id')))
         except ValueError:
             abort(400)
         tag = Tag(request.form.get('name'), color)

@@ -17,12 +17,14 @@ def missions():
 def new_mission():
     if request.method == 'POST':
         mission = Mission(request.form.get('title'),
-                          request.form.get('description'))
+                          request.form.get('description'),
+                          request.form.get('tag_id'))
         db.session.add(mission)
         db.session.commit()
         return redirect(url_for('missions'))
     else:
-        return render_template('mission/new.html')
+        tags = Tag.query.all()
+        return render_template('mission/new.html', tags=tags)
 
 @app.route('/tasks')
 def tasks():
@@ -88,7 +90,7 @@ def delete_mission(mission_id):
 def new_tag():
     if request.method == 'POST':
         try:
-            color = Color(int(request.form.get('color_value')))
+            color = Color(int(request.form.get('tag_id')))
         except ValueError:
             abort(400)
         tag = Tag(request.form.get('name'), color)

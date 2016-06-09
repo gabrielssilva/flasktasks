@@ -12,6 +12,14 @@
         <div class="form-group">
             <textarea name="description" class="form-control" rows="3" placeholder="Any further words?"></textarea>
         </div>
+        <div class="form-group">
+            <select class="form-control" name="tag_id">
+                <option value="-1">Select a color</option>
+                {% for tag in tags %}
+                    <option value="{{ tag.id }}">{{ tag.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Create it!</button>
     </form>
 

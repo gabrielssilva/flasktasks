@@ -34,9 +34,10 @@ class Mission(db.Model):
     tag_id = db.Column(db.Integer, db.ForeignKey('tag.id'))
     tasks = db.relationship('Task', backref='mission', lazy='dynamic')
 
-    def __init__(self, title, description):
+    def __init__(self, title, description, tag_id):
         self.title = title
         self.description = description
+        self.tag_id = tag_id
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -47,4 +48,9 @@ class Tag(db.Model):
     def __init__(self, name, color=Color.GREY):
         self.name = name
         self.color = color.value
+    
+    def style(self):
+        color = Color(self.color)
+        print(color)
+        return "tagged tag-%s" % color.name.lower()
     

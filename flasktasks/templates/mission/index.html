@@ -11,7 +11,7 @@
     </div>
     <div class="list-group">
         {% for mission in missions %}
-            <a href="{{ url_for("tasks", mission_id=mission.id) }}" class="list-group-item">
+            <a href="{{ url_for("tasks", mission_id=mission.id) }}" class="list-group-item {{ mission.tag.style() }}">
                 <div class="row">
                     <div class="col-sm-11">
                         <h4 class="list-group-item-header">{{ mission.title }}</h4>

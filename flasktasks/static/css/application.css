@@ -17,3 +17,51 @@
 .task-control .btn .glyphicon {
     margin-right: 5px;
 }
+
+.tagged {
+    margin: 10px 0;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    border-left-width: 7px;
+}
+
+.tag-grey {
+    border-left-color: #777;
+}
+
+.tag-grey h4 {
+    color: #777;
+}
+
+.tag-blue {
+    border-left-color: #486F88;
+}
+
+.tag-blue h4 {
+    color: #486F88;
+}
+
+.tag-green {
+    border-left-color: #2F9765;
+}
+
+.tag-green h4 {
+    color: #2F9765;
+}
+
+.tag-yellow {
+    border-left-color: #D9CE43;
+}
+
+.tag-yellow h4 {
+    color: #D9CE43;
+}
+
+.tag-red {
+    border-left-color: #BB2024;
+}
+
+.tag-red h4 {
+    color: #BB2024;
+}

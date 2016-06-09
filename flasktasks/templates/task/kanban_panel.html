@@ -1,11 +1,11 @@
-<div class="panel panel-primary">
+<div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{ title }}<span class="glyphicon glyphicon-{{ icon }}"></span></h3>
     </div>
     <div class="panel-body">
         <div class="list-group">
             {% for task in tasks[status] %}
-                <a href="{{ url_for('task', task_id=task.id) }}" class="list-group-item">
+                <a href="{{ url_for('task', task_id=task.id) }}" class="list-group-item {{ task.mission.tag.style() }}">
                     <h4 class="list-group-item-heading">{{ task.title }}</h4>
                     <p class="list-group-item-text">{{ task.description }}</p>
                 </a>

@@ -36,6 +36,8 @@ The development server can be started by running the `runserver.py` scrip.
 python runserver.py
 ```
 
+And finally browse to http://localhost:5000
+
 ## Running Tests
 
 There is no script to run all tests at once yet, since FlaskTasks still does not us nose or anything like it yet. To execute the tests, run each test file as a module.

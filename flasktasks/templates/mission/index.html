@@ -16,6 +16,9 @@
                     <div class="col-sm-11">
                         <h4 class="list-group-item-header">{{ mission.title }}</h4>
                         <p class="list-group-item-text">{{ mission.description }}</p>
+                        <div class="mission-item-additional-content">
+                            {{ mission | html_dispatch("mission_list_item_additional_content") }}
+                        </div>
                     </div>
                     <div class="col-sm-1">
                         <span class="badge badge-big badge-blue">{{ mission.tasks.count() }}</span>

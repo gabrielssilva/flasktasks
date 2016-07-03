@@ -1,7 +1,8 @@
 from flask import render_template, request, redirect, url_for, abort, jsonify
 from collections import defaultdict
 from flasktasks import app, db
-from flasktasks.models import Mission, Task, Status, Tag, Color
+from flasktasks.models import Mission, Task, Status, Tag, Color, LogEntry
+from flasktasks.signals import task_created, mission_created 
 
 
 @app.route('/')
@@ -21,6 +22,7 @@ def new_mission():
                           request.form.get('tag_id'))
         db.session.add(mission)
         db.session.commit()
+        mission_created.send(mission)
         return redirect(url_for('missions'))
     else:
         tags = Tag.query.all()
@@ -50,6 +52,7 @@ def new_task():
                     request.form.get('mission_id'))
         db.session.add(task)
         db.session.commit()
+        task_created.send(task)
         return redirect(url_for('tasks'))
     else:
         missions = Mission.query.all()
@@ -100,3 +103,9 @@ def new_tag():
     else:
         colors = { color.name: color.value for color in Color }
         return render_template('tags/new.html', colors=colors)
+
+
+@app.route('/log')
+def log():
+    log_entries = LogEntry.query.all()
+    return render_template('log.html', log_entries=log_entries)

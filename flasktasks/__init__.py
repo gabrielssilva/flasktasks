@@ -11,6 +11,7 @@ import flasktasks.views
 import flasktasks.filters
 import flasktasks.plugin_filters
 import flasktasks.models
+import flasktasks.logger
 
 
 from flasktasks.plugins import load_plugins

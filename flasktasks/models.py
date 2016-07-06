@@ -1,5 +1,6 @@
 from flasktasks import db
 from enum import Enum
+from time import strftime
 
 
 class Status(Enum):
@@ -52,4 +53,13 @@ class Tag(db.Model):
     def style(self):
         color = Color(self.color)
         return "tagged tag-%s" % color.name.lower()
-    
+
+
+class LogEntry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.String(30))
+    message = db.Column(db.String(140))
+
+    def __init__(self, message):
+        self.message = message
+        self.timestamp = strftime("%d-%m-%Y %H:%M:%S")
